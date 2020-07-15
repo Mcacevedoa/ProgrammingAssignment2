@@ -1,31 +1,31 @@
-makeCacheMatrix <- función (x = matriz ()) {
-  j <- NULL
-  establecer <- función (y) {
-  x << - y
-  j << - NULL
+makeCacheMatrix <- function (x = matrix ()) {
+  j <- NULL   # Ajustar j como NULL para que contenga el valor de la inversa
+  set <- function (y) {
+    x << - y
+    ji << - NULL # Si hay una nueva matrix, j se resetea a NULL
   }
-  obtener <- función () x
-  setInverse <- función (inversa) j << - inversa
-  getInverse <- function () j 
-  lista (set = set, get = get, 
-  setInverse = setInverse, 
-  getInverse = getInverse)
+  get <- function () x # La función get devuelve el valor del argumento de matriz
+  
+  setinverse <- function (j) ji <<- j # Asigna un valor de inf en el "parent enviroment"
+  getinverse <- function () ji # obtener el valor de ji donde se llama
+  list(set = set, get = get, 
+  setinverse = setinverse, getinverse = getinverse)
 }
 
 ## makeCacheMatrix es una función que crea un objeto especial "matriz" que puede
 ## cachee su inverso para la entrada (que es una matriz cuadrada invertible)
 
-cacheSolve <- función (x, ...) {
+cacheSolve <- function (x, ...) {
 ## Devuelve una matriz que es la inversa de 'x'
-  j <- x $ getInverse ()
-  if (! is.null (j )) {
-  mensaje ("obtener datos en caché")
-  volver (j)
+  ji <- x $ getInverse ()
+  if (! is.null (ji)) {
+    mensaje ("obtener datos en caché")
+    volver (ji)
   }
   mat <- x $ get ()
-  j <- resolver (mat, ...)
-  x $ setInverse (j)
-  j
+  ji <- solve(mat, ...)
+  x $ getinverse (ji)
+  ji
 }
 ## cacheSolve es una función que calcula el inverso de la "matriz" especial
 ## devuelto por makeCacheMatrix arriba. Si el inverso ya ha sido calculado
