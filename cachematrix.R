@@ -19,8 +19,8 @@ cacheSolve <- function (x, ...) {
 ## Devuelve una matriz que es la inversa de 'x'
   ji <- x $ getInverse ()
   if (! is.null (ji)) {
-    mensaje ("obtener datos en caché")
-    volver (ji)
+    message ("obtener datos en caché")
+    return(ji)
   }
   mat <- x $ get ()
   ji <- solve(mat, ...)
